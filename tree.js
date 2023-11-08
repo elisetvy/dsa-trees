@@ -64,13 +64,46 @@ class Tree {
 
   /** countEvens(): count all nodes in the tree that have even values. */
   countEvens() {
+    let sum = 0;
+    let numStack = [this.root];
+
+    if (this.root === null) return sum;
+
+    while (numStack.length) {
+      let current = numStack.pop();
+      if(current.val % 2 === 0) sum ++;
+
+      if (current.children.length !== 0) {
+        for (let child of current.children) {
+          numStack.push(child);
+        }
+      }
+    }
+
+    return sum;
 
   }
 
   /** numGreater(lowerBound): return a count of the number of nodes
    * whose value is greater than lowerBound. */
   numGreater(lowerBound) {
+    let sum = 0;
+    let numStack = [this.root];
 
+    if (this.root === null) return sum;
+
+    while (numStack.length) {
+      let current = numStack.pop();
+      if(current.val > lowerBound) sum ++;
+
+      if (current.children.length !== 0) {
+        for (let child of current.children) {
+          numStack.push(child);
+        }
+      }
+    }
+
+    return sum;
   }
 }
 
