@@ -78,31 +78,67 @@ class BinaryTree {
   // this is a stack or recursion problem; we'll use recursion
 
   maxDepth() {
-    let highestDepth = 1;
-    let depthCounter = 1;
-
-    let stack = [this.root];
-
+    debugger
     if (this.root === null) return 0;
+    if (this.left === null && this.right === null) return 0;
 
-    while (stack.length){
-      let current = stack.pop();
-      // if(current.right === null || current.left === null){
-      //   return depth;
-      // }
-      if(current.left)stack.push(current.left);
-      if(current.right)stack.push(current.right);
+    let leftDepth = this.maxDepth()
+    let rightDepth = this.maxDepth();
 
-      depthCounter++;
-      if(current.left === null && current.right === null){
-        if(depthCounter > highestDepth)
-        highestDepth = depthCounter;
-        depthCounter = 1;
-      }
-
-    }
-    return highestDepth;
+    leftDepth > rightDepth ? 1 + leftDepth : 1 + rightDepth;
   }
+//     function traverseLeft(node) {
+//       if (node.left === null) return 0;
+
+//       return 1 + traverseLeft(node.left);
+//     }
+
+//     function traverseRight(node) {
+//       if (node.right === null) return 0;
+
+//       return 1 + traverseRight(node.right);
+//     }
+// // 1 function give different node
+//     let highestDepth = 1;
+
+//     if (this.root === null) return 0;
+
+//     if (this.root.left) {
+//       let leftCount = traverseLeft(this.root.left);
+//       let rightCount = traverseRight(this.root.right);
+//       highestDepth = Math.max(highestDepth, leftCount, rightCount);
+//     }
+
+//     if (this.root.right) {
+//       let leftCount = traverseLeft(this.root.left);
+//       let rightCount = traverseRight(this.root.right);
+//       highestDepth = Math.max(highestDepth, leftCount, rightCount);
+//       }
+//     }
+
+
+
+
+
+
+//       // if(current.right === null || current.left === null){
+//       //   return depth;
+//       // }
+//       if(current.left)stack.push(current.left);
+//       if(current.right)stack.push(current.right);
+
+//       if(current.left === null && current.right === null){
+//         if(depthCounter > highestDepth)
+//         highestDepth = depthCounter;
+//         depthCounter = 1;
+//       } else {
+
+//         depthCounter++;
+//       }
+
+//     }
+//     return highestDepth;
+//   }
 
   /** minDepth(): return the minimum depth of the tree -- that is,
    * the length of the shortest path from the root to a leaf. */
